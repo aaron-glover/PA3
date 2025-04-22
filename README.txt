@@ -14,17 +14,23 @@ allows traffic path switching between two routes.
 The orchestrator automates topology creation, OSPF daemon setup, host route installation, and OSPF cost
 adjustments to switch traffic paths without packet loss.
 
-FOLDER STRUCTURE
+## FOLDER STRUCTURE
 - Aaron_Glover_u1438236.py # Main Python script to control the setup
 - docker-compose.yaml # Defines container network topology
-- dockersetup # Script to install Docker and dependencies
 - router.Dockerfile # Dockerfile for router containers with FRR
 - host.Dockerfile # Dockerfile for HostA and HostB
 
-SETUP INSTRUCTIONS
-1. Install Docker: Run the provided dockersetup script from the VM
+## SETUP INSTRUCTIONS
+1. Similar to the directions for PA3, clone the helper files: 
+    git clone https://gitlab.flux.utah.edu/teach-studentview/cs4480-2025-s.git
+2. Run the following command to install docker:
+    cd cs4480-2025-s/pa3/part1/
+    ./dockersetup
+    sudo systemctl start docker
+3. Next clone the orchestrator file and accompanying docker files onto the VM
 
-ORCHESTRATOR USAGE
+
+## ORCHESTRATOR USAGE
 Run the orchestrator script with the appropriate option:
     python3 Aaron_Glover_u1438236.py -h # brings up the help menu with commands listed below
 
@@ -40,4 +46,17 @@ Step 1. python3 Aaron_Glover_u1438236.py build
 Step 2. python3 Aaron_Glover_u1438236.py start
 Step 3. python3 Aaron_Glover_u1438236.py route
 Step 4. python3 Aaron_Glover_u1438236.py north # or python3 Aaron_Glover_u1438236.py south
+
+NOTES
+- the install for tcpdump is in the router.Dockerfile but if for some reason tcpdump isn't installed:
+    sudo docker exec -it r$ apt update
+    sudo docker exec -it r$ apt install -y tcpdump 
+    Where $ is 1, 2, 3, and 4
+
+- To reset the environment:
+    sudo docker compose down
+    sudo python3 Aaron_Glover_u1438236.py build
+
+- If Docker fails to run:
+    sudo systemctl start docker
 
