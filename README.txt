@@ -27,7 +27,8 @@ adjustments to switch traffic paths without packet loss.
     cd cs4480-2025-s/pa3/part1/
     ./dockersetup
     sudo systemctl start docker
-3. Next clone the orchestrator file and accompanying docker files onto the VM
+3. Next clone the orchestrator repo:
+    git clone https://github.com/aaron-glover/PA3.git
 
 
 ## ORCHESTRATOR USAGE
